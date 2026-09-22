@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: cloudnative-app
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: cloudnative-app
+  template:
+    metadata:
+      labels:
+        app: cloudnative-app
+    spec:
+      containers:
+        - name: cloudnative-app
+          image: cloudnative-app:latest
+          imagePullPolicy: Never
+          ports:
+            - containerPort: 5000
